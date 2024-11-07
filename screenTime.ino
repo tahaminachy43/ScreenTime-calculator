@@ -1,11 +1,11 @@
 #include <Servo.h>
 
-Servo myServo; // Create a servo object to control a servo motor
+Servo myServo; 
 
-int servoPin = 9; // Define the pin to which the servo is connected
+int servoPin = 9;
 
 void setup() {
-  myServo.attach(servoPin); // Attaches the servo on pin 9 to the servo object
+  myServo.attach(servoPin); 
   Serial.begin(9600);
   myServo.write(75);
   Serial.println("Enter an age (18, 30, 50):");
@@ -13,7 +13,7 @@ void setup() {
 
 void loop() {
   if (Serial.available() > 0) {
-    int age = Serial.parseInt(); // Read the user input from the Serial Monitor
+    int age = Serial.parseInt(); 
 
     if (age == 18 || age == 30 || age == 50) {
       Serial.print("Received input: ");
@@ -28,19 +28,19 @@ void loop() {
         delayTime = 10000; // 10 seconds
       }
 
-      // Sweep the servo from 60 to 80 degrees in steps of 1 degree with age-specific delay
+      
       for (int angle = 75; angle <= 90; angle++) {
         myServo.write(angle); // Set the servo position
         Serial.print("Angle: ");
         Serial.println(angle);
-        delay(150); // Wait for servo to reach the position based on age
+        delay(150); 
       }
       delay(delayTime);
 
-      // Sweep the servo from 80 to 60 degrees in steps of 1 degree with age-specific delay
+      
       for (int angle = 90; angle >= 75; angle--) {
         myServo.write(angle); // Set the servo position
-        delay(150); // Wait for servo to reach the position based on age
+        delay(150); 
       }
       delay(10000);
 
